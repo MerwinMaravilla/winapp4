@@ -117,71 +117,67 @@ export default function Home() {
   };
   //</Import Token>
 
-  //HTML/TAILWIND BASTA DESIGN  BAGUHIN NIYO TO PLS LANG
-  return (
-    
-      <main>
-        <p style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '30px', marginTop: '10px' }}>
-        Welcome to Mint/Staking of WIN Tokens
-        </p>
+ return (
+    <main className="flex flex-col items-center justify-center">
+      <p className="text-3xl mt-10">
+         WIN Token 
+      </p>
   
-        <div style={{ minHeight: '25vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <button onClick={() => { connectWallet(); }} className="p-3 bg-red-400 text-white rounded">
-            {walletKey !== "" ? walletKey : " Connect wallet"}
-          </button>
+      <div className="flex flex-col items-center justify-center h-1/4">
+        <button onClick={() => { connectWallet(); }} className="btn-primary mt-5">
+          {walletKey !== "" ? walletKey : "Connect Wallet"}
+        </button>
   
-          <button onClick={importToken} className="p-3 bg-red-400 text-white rounded" style={{ marginTop: '10px' }}>
-            Import Token
-          </button>
-        </div>
+        <button onClick={importToken} className="btn-primary mt-5">
+          Import Token
+        </button>
+      </div>
   
-        <div style={{marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-
-          <form>
-            <label> Input Amount To Mint</label><br></br>
-          </form>
-          <input
-            type="number"
-            value={mintingAmount}
-            onChange={(e) => mintAmountChange(e)}
-          />
-          <button
-            onClick={() => { mintCoin(); }}
-            className="p-3 bg-red-400 text-white rounded">
-            {"Mint Token"}
-          </button>
-        </div>
+      <div className="flex flex-col items-center justify-center mt-5">
+        <form>
+          <label htmlFor="mintAmount">Input Amount To Mint:</label><br/>
+        </form>
+        <input
+          type="number"
+          id="mintAmount"
+          value={mintingAmount}
+          onChange={(e) => mintAmountChange(e)}
+          className="input-field"
+        />
+        <button
+          onClick={() => { mintCoin(); }}
+          className="btn-primary mt-5">
+          Mint Token
+        </button>
+      </div>
   
-        <br></br>
+      <div className="flex flex-col items-center justify-center mt-5">
+        <form>
+          <label htmlFor="stakeAmount">Input Amount To Stake:</label><br/>
+        </form>
+        <input
+          type="number"
+          id="stakeAmount"
+          value={stakingAmount}
+          onChange={(e) => stakeAmountChange(e)}
+          className="input-field"
+        />
   
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '10vh' }}>
-          <form>
-            <label> Input Amount To Stake</label><br></br>
-          </form>
-          <input
-            type="number"
-            value={stakingAmount}
-            onChange={(e) => stakeAmountChange(e)}
-          />
+        <button
+          onClick={stakeCoin}
+          className="btn-primary mt-5">
+          Stake It
+        </button>
+      </div>
   
-          <button
-            onClick={stakeCoin}
-            className="p-3 bg-red-400 text-white rounded">
-            {"Stake It"}
-          </button>
-        </div>
-  
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '20vh' }}>
-          <br></br>
-          <label>Wait for At least 1 min before Withdrawing </label>
-
-          <button
-            onClick={withdrawCoin}
-            className="p-3 bg-red-400 text-white rounded">
-            {"Withdraw"}
-          </button>
-        </div>
-      </main>
-
+      <div className="flex flex-col items-center justify-center mt-5">
+        <p>Wait for at least 1 minute before Withdrawing</p>
+        <button
+          onClick={withdrawCoin}
+          className="btn-primary mt-5">
+          Withdraw
+        </button>
+      </div>
+    </main>
   );
-}  
+}
